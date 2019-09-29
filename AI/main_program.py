@@ -1,6 +1,14 @@
 import os
 from google.cloud import vision
 import io
+from gtts import gTTS
+from time import sleep
+
+speech = "Hello, my name is Blind Vision. Nice to meet you!"
+tts = gTTS(text=speech, lang="en")
+tts.save("/home/pi/Music/speech.mp3")
+os.system("omxplayer /home/pi/Music/speech.mp3")
+
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/home/pi/Downloads/blind-eye-3e6495bea978.json"
 path = "/home/pi/Pictures/landmark.jpeg"
                         
@@ -16,24 +24,34 @@ def face(path):
     faces = response.face_annotations
 
     # Names of likelihood from google.cloud.vision.enums
-    likelihood_name = ('UNKNOWN', 'VERY_UNLIKELY', 'UNLIKELY', 'POSSIBLE',
-                       'LIKELY', 'VERY_LIKELY')
+    likelihood_name = ('UNKNOWN', 'is VERY UNLIKELY', 'is UNLIKELY', 'is POSSIBLE',
+                       'is LIKELY', ' is VERY LIKELY')
     for face in faces:
         if face.anger_likelihood > face.joy_likelihood and face.anger_likelihood > face.surprise_likelihood: 
-            print('anger: {}'.format(likelihood_name[face.anger_likelihood]))
+            print('anger {}'.format(likelihood_name[face.anger_likelihood]))
+            speech = 'anger: {}'.format(likelihood_name[face.anger_likelihood])
+            tts = gTTS(text=speech, lang="en")
+            tts.save("/home/pi/Music/speech.mp3")
         
         elif face.joy_likelihood > face.anger_likelihood and face.joy_likelihood > face.surprise_likelihood: 
-            print('joy: {}'.format(likelihood_name[face.joy_likelihood]))
+            print('joy {}'.format(likelihood_name[face.joy_likelihood]))
+            speech = 'joy: {}'.format(likelihood_name[face.joy_likelihood])
+            tts = gTTS(text=speech, lang="en")
+            tts.save("/home/pi/Music/speech.mp3")
         
         else:
             if face.surprise_likelihood > face.joy_likelihood and face.surprise_likelihood > face.anger_likelihood: 
-                print('surprise: {}'.format(likelihood_name[face.surprise_likelihood]))
-
+                print('surprise {}'.format(likelihood_name[face.surprise_likelihood]))
+                speech = 'surprise: {}'.format(likelihood_name[face.surprise_likelihood])
+                tts = gTTS(text=speech, lang="en")
+                tts.save("/home/pi/Music/speech.mp3")
+        os.system("omxplayer /home/pi/Music/speech.mp3")
+        
         break
         
         
 def text(path):
-
+    
     client = vision.ImageAnnotatorClient()
 
     with io.open(path, 'rb') as image_file:
@@ -41,23 +59,20 @@ def text(path):
 
     image = vision.types.Image(content=content)
 
-    response = client.document_text_detection(image=image)
+    response = client.text_detection(image=image)
+    texts = response.text_annotations
+    print('Texts:')
 
-    for page in response.full_text_annotation.pages:
-        for block in page.blocks:
-            print('\nBlock confidence: {}\n'.format(block.confidence))
+    for text in texts:
+        print('\n"{}"'.format(text.description))
+        speech = str(text.description)
+        tts = gTTS(text=speech, lang="en")
+        tts.save("/home/pi/Music/speech.mp3")
+        os.system("omxplayer /home/pi/Music/speech.mp3")
+        break
+        
 
-            for paragraph in block.paragraphs:
-                print('Paragraph confidence: {}'.format(
-                    paragraph.confidence))
-
-                for word in paragraph.words:
-                    word_text = ''.join([
-                        symbol.text for symbol in word.symbols
-                    ])
-                    if word.confidence > 0.5:
-                        print('{} (confidence: {})'.format(
-                            word_text, word.confidence))
+                        
                         
 def landmark(path):
     
@@ -73,10 +88,14 @@ def landmark(path):
 
     for landmark in landmarks:
         print(landmark.description)
+        speech = str(landmark.description)
+        tts = gTTS(text=speech, lang="en")
+        tts.save("/home/pi/Music/speech.mp3")
+        os.system("omxplayer /home/pi/Music/speech.mp3")
         break
         
 def main(path):
-    
+
     client = vision.ImageAnnotatorClient()
 
     with open(path, 'rb') as image_file:
@@ -107,8 +126,10 @@ def main(path):
         if label.description == "Hair" or "Woman":
             face(path)
             break
-                
+
+                    
         
             
             
 main(path)
+
