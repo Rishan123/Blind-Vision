@@ -14,12 +14,12 @@ And of course, all of this is either done In the Terminal, or Python 3.
 
 First of all, create a new project with the name Blind-Vision (or any name you prefer). Then fill in your billing details. If purchasing Google Cloud Vision isn't possible, don't worry, we will be using OpenCV for the finished product. Then create a service account key by clicking Credentials and then download it. In the Terminal, do:
 
+## Python 2 ##
 ```
 pip install --upgrade google-cloud-vision
 ```
-For downloading the library for Python 2.
-And then do:
 
+## Python 3 ##
 ```
 pip3 install --upgrade google-cloud-vision
 ```
