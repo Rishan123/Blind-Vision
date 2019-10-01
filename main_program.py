@@ -12,7 +12,7 @@ GPIO.setwarnings(False)
 GPIO.setup(button, GPIO.IN)
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/home/pi/Downloads/blind-eye-3e6495bea978.json"
-path = "home/pi/blind-vision/Pictures/landmark.jpeg"
+path = "/home/pi/Pictures/landmark.jpeg"
                         
 def face(path):
     client = vision.ImageAnnotatorClient()
