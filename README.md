@@ -2,7 +2,7 @@
 
 This repository is all about the creation of Blind Vision. Blind Vision will be an assistant for blind people that uses a Raspberry Pi to tell what is in front of the wearer.
 
-### Table of Contents:  
+## Table of Contents:  
 
 * Installing Google Cloud Vision
 * Installing Google Text-To-Speech (gTTS)
@@ -10,16 +10,16 @@ This repository is all about the creation of Blind Vision. Blind Vision will be 
 
 And of course, all of this is either done In the Terminal, or Python 3.
 
-### Installing Google Cloud Vision (GCV) ###
+## Installing Google Cloud Vision (GCV) ##
 
 First of all, create a new project with the name Blind-Vision (or any name you prefer). Then fill in your billing details. If purchasing Google Cloud Vision isn't possible, don't worry, we will be using OpenCV for the finished product. Then create a service account key by clicking Credentials and then download it. In the Terminal, do:
 
-## Python 2 ##
+### Python 2 ###
 ```
 pip install --upgrade google-cloud-vision
 ```
 
-## Python 3 ##
+### Python 3 ###
 ```
 pip3 install --upgrade google-cloud-vision
 ```
@@ -56,22 +56,22 @@ detect_labels("/home/pi/Pictures/happy.jpeg")
 ```
 
 
-### Installing Google Text-To-Speech ###
+## Installing Google Text-To-Speech ##
 
 Installing gTTS is free of cost and is really easy to install. Just use the single command on the Terminal:
 
-## Python 2 ##
+### Python 2 ###
 ```
 pip install gTTS
 ```
 
-## Python 3 ##
+### Python 3 ###
 
 ```
 pip3 install gTTS
 ```
 
-### The main program ###
+## The main program ##
 
 So, assuming you have all the hardware connected (if not, follow this link), let's get to the main program!
 
