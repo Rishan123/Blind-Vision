@@ -4,15 +4,16 @@ import io
 from gtts import gTTS
 from time import sleep
 import RPi.GPIO as GPIO
+from picamera import PiCamera
 
 button = 15
-
+cam = PiCamera()
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(button, GPIO.IN)
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/home/pi/Downloads/blind-eye-3e6495bea978.json"
-path = "/home/pi/Pictures/landmark.jpeg"
+path = "/home/pi/blind-vision/capture.jpeg"
                         
 def face(path):
     client = vision.ImageAnnotatorClient()
@@ -98,6 +99,7 @@ def landmark(path):
         
 def main(path):
 
+    cam.capture(path)
     client = vision.ImageAnnotatorClient()
 
     with open(path, 'rb') as image_file:
