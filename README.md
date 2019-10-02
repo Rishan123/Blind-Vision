@@ -26,10 +26,10 @@ pip3 install --upgrade google-cloud-vision
 For downloading for Python 3.
 
 Then create a test program called ```test_vision.py``` and enter the following:
-
+Don't forget to replace ```/YOUR/SERVICE/ACCOUNT/CREDENTIALS/ABCDEF.JSON``` with the path to the credentials and the name.
 ```
 import os
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/home/pi/Downloads/blind-eye-3e6495bea978.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/YOUR/SERVICE/ACCOUNT/CREDENTIALS/ABCDEF.JSON"
 
 def detect_labels(path):
     """Detects labels in the file."""
@@ -74,6 +74,7 @@ pip3 install gTTS
 ## The main program ##
 
 So, assuming you have all the hardware connected (if not, follow this link), let's get to the main program!
+Don't forget to replace ```/YOUR/SERVICE/ACCOUNT/CREDENTIALS/ABCDEF.JSON``` with the path to the credentials and the name.
 
 ```
 
