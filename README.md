@@ -73,7 +73,7 @@ pip3 install gTTS
 
 ## The main program ##
 
-So, assuming you have all the hardware connected (if not, follow this link), let's get to the main program!
+So, assuming you have all the hardware connected (if not, follow this [link](https://github.com/Rishan123/Blind-Vision/tree/master/Hardware)), let's get to the main program!
 Don't forget to replace ```/YOUR/SERVICE/ACCOUNT/CREDENTIALS/ABCDEF.JSON``` with the path to the credentials and the name.
 
 ```
