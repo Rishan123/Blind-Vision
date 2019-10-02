@@ -7,4 +7,8 @@ Component | Pin Number(s)
 Button | 0V, GPIO 15
 UDS | 0V, GPIO 17, GPIO 4, 5V
 
-Follow this [link](https://projects.raspberrypi.org/en/projects/see-like-a-bat/7) for the UDS wiring.
+This is the diagram for the UDS wiring:
+
+
+![UDS wiring](https://projects-static.raspberrypi.org/projects/see-like-a-bat/abc6446f4ae760a537312594bcb2d9d2d894f4ba/en/images/See_Like_A_Bat_Diagram_5.png)
+
