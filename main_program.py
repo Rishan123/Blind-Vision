@@ -12,7 +12,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(button, GPIO.IN)
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/home/pi/Downloads/blind-eye-3e6495bea978.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/home/pi/Downloads/blind-vision-83a001e9c5f5.json"
 path = "/home/pi/blind-vision/capture.jpeg"
 trig = 4
 echo = 17
@@ -100,18 +100,16 @@ def main(path):
             print("Text Detected")
             text(path)
             break
-        if label.description == "Hair" or "Woman" or "Person":
-            print("Person Detected")
-            speech = "Person Detected!"
+        else:
+            print(label.description)
+            speech = label.description
             tts = gTTS(text=speech, lang="en")
             tts.save("/home/pi/Music/speech.mp3")
             os.system("omxplayer /home/pi/Music/speech.mp3")
-            break
-
-                    
-        
+            break       
             
 while True:
     if GPIO.input(button):
         print("ON")
         main(path)
+        
