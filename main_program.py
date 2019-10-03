@@ -17,46 +17,6 @@ path = "/home/pi/blind-vision/capture.jpeg"
 trig = 4
 echo = 17
 print("Press button to start")
-def get_pulse_time_v2(trig_pin, echo_pin):
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setwarnings(False)
-
-    GPIO.setup(trig_pin, GPIO.OUT)
-    GPIO.setup(echo_pin, GPIO.IN)
-    cnt1 = 0
-    cnt2 = 0
-
-    GPIO.output(trig_pin, True)
-    sleep(0.00001)
-    GPIO.output(trig_pin, False)
-
-    start = time()
-    while GPIO.input(echo_pin) == 0:
-        start = time()
-        cnt1 += 1
-        if cnt1 > 1000:
-            break
-
-    stop = time()
-    while GPIO.input(echo_pin) == 1:
-        stop = time()
-        cnt2 += 1
-        if cnt2 > 1000:
-            break
-
-    return (stop - start)
-
-def calculate_distance(duration):
-    speed = 343
-    distance = speed * duration / 2
-    return distance
-    
-    
-def calc_dist_cm_v2(trig_pin, echo_pin):
-    duration = get_pulse_time_v2(trig_pin, echo_pin)
-    distance = calculate_distance(duration)
-    distance_cm = int(distance*10000)
-    return distance_cm
 
 def text(path):
     
@@ -77,11 +37,7 @@ def text(path):
         tts = gTTS(text=speech, lang="en")
         tts.save("/home/pi/Music/speech.mp3")
         os.system("omxplayer /home/pi/Music/speech.mp3")
-        break
-        
-
-                        
-                        
+        break                        
 def landmark(path):
     
     client = vision.ImageAnnotatorClient()
@@ -116,21 +72,24 @@ def main(path):
     
     response = client.label_detection(image=image)
     labels = response.label_annotations
-        
+    face_count = 0
     for object_ in objects:
-        if object_.name == "Person":
+        if object_.name == "Glasses":
+            face_count += 1
+            break
+        if object_.name == "Person" and face_count == 0:
             speech = "Face Detected"
             tts = gTTS(text=speech, lang="en")
             tts.save("/home/pi/Music/speech.mp3")
             os.system("omxplayer /home/pi/Music/speech.mp3")
+            face_count += 1
         if object_.score >= 0.6:
             if object_.name == "Top":
                 break
             elif object_.name == "Building":
                 landmark(path)
             else:
-                print('\n{} '.format(object_.name))
-                
+                print('\n{}, {} '.format(object_.name,object_.score))
                 speech = (object_.name)
                 tts = gTTS(text=speech, lang="en")
                 tts.save("/home/pi/Music/speech.mp3")
@@ -141,7 +100,7 @@ def main(path):
             print("Text Detected")
             text(path)
             break
-        if label.description == "Hair" or "Woman" or "Glasses" or "Person":
+        if label.description == "Hair" or "Woman" or "Person":
             print("Person Detected")
             speech = "Person Detected!"
             tts = gTTS(text=speech, lang="en")
