@@ -12,7 +12,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(button, GPIO.IN)
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/home/pi/Downloads/blind-vision-83a001e9c5f5.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/home/pi/blind-vision/blind-vision-83a001e9c5f5.json"
 path = "/home/pi/blind-vision/capture.jpeg"
 trig = 4
 echo = 17
