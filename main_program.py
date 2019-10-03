@@ -14,45 +14,50 @@ GPIO.setup(button, GPIO.IN)
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="/home/pi/Downloads/blind-eye-3e6495bea978.json"
 path = "/home/pi/blind-vision/capture.jpeg"
-                        
-def face(path):
-    client = vision.ImageAnnotatorClient()
+trig = 4
+echo = 17
+print("Press button to start")
+def get_pulse_time_v2(trig_pin, echo_pin):
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
 
-    with io.open(path, 'rb') as image_file:
-        content = image_file.read()
+    GPIO.setup(trig_pin, GPIO.OUT)
+    GPIO.setup(echo_pin, GPIO.IN)
+    cnt1 = 0
+    cnt2 = 0
 
-    image = vision.types.Image(content=content)
+    GPIO.output(trig_pin, True)
+    sleep(0.00001)
+    GPIO.output(trig_pin, False)
 
-    response = client.face_detection(image=image)
-    faces = response.face_annotations
+    start = time()
+    while GPIO.input(echo_pin) == 0:
+        start = time()
+        cnt1 += 1
+        if cnt1 > 1000:
+            break
 
-    # Names of likelihood from google.cloud.vision.enums
-    likelihood_name = ('UNKNOWN', 'is VERY UNLIKELY', 'is UNLIKELY', 'is POSSIBLE',
-                       'is LIKELY', ' is VERY LIKELY')
-    for face in faces:
-        if face.anger_likelihood > face.joy_likelihood and face.anger_likelihood > face.surprise_likelihood: 
-            print('anger {}'.format(likelihood_name[face.anger_likelihood]))
-            speech = 'anger: {}'.format(likelihood_name[face.anger_likelihood])
-            tts = gTTS(text=speech, lang="en")
-            tts.save("/home/pi/Music/speech.mp3")
-        
-        elif face.joy_likelihood > face.anger_likelihood and face.joy_likelihood > face.surprise_likelihood: 
-            print('joy {}'.format(likelihood_name[face.joy_likelihood]))
-            speech = 'joy: {}'.format(likelihood_name[face.joy_likelihood])
-            tts = gTTS(text=speech, lang="en")
-            tts.save("/home/pi/Music/speech.mp3")
-        
-        else:
-            if face.surprise_likelihood > face.joy_likelihood and face.surprise_likelihood > face.anger_likelihood: 
-                print('surprise {}'.format(likelihood_name[face.surprise_likelihood]))
-                speech = 'surprise: {}'.format(likelihood_name[face.surprise_likelihood])
-                tts = gTTS(text=speech, lang="en")
-                tts.save("/home/pi/Music/speech.mp3")
-        os.system("omxplayer /home/pi/Music/speech.mp3")
-        
-        break
-        
-        
+    stop = time()
+    while GPIO.input(echo_pin) == 1:
+        stop = time()
+        cnt2 += 1
+        if cnt2 > 1000:
+            break
+
+    return (stop - start)
+
+def calculate_distance(duration):
+    speed = 343
+    distance = speed * duration / 2
+    return distance
+    
+    
+def calc_dist_cm_v2(trig_pin, echo_pin):
+    duration = get_pulse_time_v2(trig_pin, echo_pin)
+    distance = calculate_distance(duration)
+    distance_cm = int(distance*10000)
+    return distance_cm
+
 def text(path):
     
     client = vision.ImageAnnotatorClient()
@@ -113,22 +118,35 @@ def main(path):
     labels = response.label_annotations
         
     for object_ in objects:
-        if object_.score >= 0.1:
+        if object_.name == "Person":
+            speech = "Face Detected"
+            tts = gTTS(text=speech, lang="en")
+            tts.save("/home/pi/Music/speech.mp3")
+            os.system("omxplayer /home/pi/Music/speech.mp3")
+        if object_.score >= 0.6:
             if object_.name == "Top":
                 break
-            ## Add in the landmarks() function
-            if object_.name == "Building":
+            elif object_.name == "Building":
                 landmark(path)
             else:
-                print('\n{} (confidence: {})'.format(object_.name, object_.score))
+                print('\n{} '.format(object_.name))
+                
+                speech = (object_.name)
+                tts = gTTS(text=speech, lang="en")
+                tts.save("/home/pi/Music/speech.mp3")
+                os.system("omxplayer /home/pi/Music/speech.mp3")
                 
     for label in labels:
         if label.description == "Text":
             print("Text Detected")
             text(path)
             break
-        if label.description == "Hair" or "Woman":
-            face(path)
+        if label.description == "Hair" or "Woman" or "Glasses" or "Person":
+            print("Person Detected")
+            speech = "Person Detected!"
+            tts = gTTS(text=speech, lang="en")
+            tts.save("/home/pi/Music/speech.mp3")
+            os.system("omxplayer /home/pi/Music/speech.mp3")
             break
 
                     
