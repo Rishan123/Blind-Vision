@@ -8,7 +8,14 @@ This repository is all about the creation of Blind Vision. Blind Vision will be 
 * Installing Google Text-To-Speech (gTTS)
 
 
+## Installing Tensorflow ##
 
+Tensorflow is a machine learning framework which Google has provided. We will be using this in our project for the image classification. To install Tensorflow for Python 3:
+
+```
+sudo pip3 install tensorflow 
+```
+This installation will take a long time, so you might take a stroll in the park or have a cup of tea for a few minutes.
 
 
 ## Installing Google Text-To-Speech ##
@@ -26,4 +33,4 @@ pip install gTTS
 pip3 install gTTS
 ```
 
-That's it! Now just download main_program.py ad run it!
+
