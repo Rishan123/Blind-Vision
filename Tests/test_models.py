@@ -42,7 +42,7 @@ model.compile(optimizer='adam', # This is how the model is updated based on the 
 # predictions match the labels from the test_labels array.
 
 
-model.fit(train_images, train_labels, epochs=5)
+model.fit(train_images, train_labels, epochs=8)
 
 test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2) # Evaluate the model and assign 'test_loss' and
 # 'test_acc' to it.
