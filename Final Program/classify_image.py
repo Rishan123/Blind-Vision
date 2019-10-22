@@ -15,12 +15,7 @@ model = tf.keras.Sequential([
     hub.KerasLayer(classifier_url, input_shape=IMAGE_SHAPE+(3,))
 ])
 
-# Compile the model. Before the model is trained, it needs a few more settings:
-model.compile(optimizer='adam', # This is how the model is updated based on the data it sees and its loss function.
-              loss='sparse_categorical_crossentropy', # This measure how well the model is doing during training.
-              metrics=['accuracy']) # Used to monitor the training and testing steps. The following example uses accuracy,
-              # the fraction of the images that are correctly classified.
-
+# You can change the file path to your own image. You don't even need it at certain dimensions!
 img = '/home/pi/tf/cat.jpeg'
 img = Image.open(img).resize(IMAGE_SHAPE)
 
