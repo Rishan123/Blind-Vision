@@ -15,7 +15,10 @@ model = tf.keras.Sequential([
     hub.KerasLayer(classifier_url, input_shape=IMAGE_SHAPE+(3,))
 ])
 
+<<<<<<< HEAD
 # You can change the file path to your own image. You don't even need it at certain dimensions!
+=======
+>>>>>>> 634a4ae64202f5b155a637bc9fc9cba8edf4a579
 img = '/home/pi/tf/cat.jpeg'
 img = Image.open(img).resize(IMAGE_SHAPE)
 
