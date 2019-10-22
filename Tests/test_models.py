@@ -1,4 +1,4 @@
-import tensorflow as tf
+#import tensorflow as tf
 from tensorflow import keras
 import numpy as np
 import matplotlib.pyplot as plt
@@ -12,6 +12,7 @@ mnist = keras.datasets.fashion_mnist
 train_images = train_images / 255.0
 test_images = test_images / 255.0
 
+                #   0             1          2           3       4
 class_names = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat',
                'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
 
@@ -41,8 +42,8 @@ model.compile(optimizer='adam', # This is how the model is updated based on the 
 # You ask the model to make predictions about a test set—in this example, the test_images array. Verify that the
 # predictions match the labels from the test_labels array.
 
-
-model.fit(train_images, train_labels, epochs=8)
+print('Training...')
+model.fit(train_images, train_labels, epochs=1)
 
 test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2) # Evaluate the model and assign 'test_loss' and
 # 'test_acc' to it.
@@ -51,32 +52,33 @@ test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2) # Eva
 print('\nTest accuracy:', int(test_acc*100),'%')
 print('\nTest loss:',int(test_loss*100),'%')
 
+
 predictions = model.predict(test_images) # Predict the test mages and assign predictions to it.
+img = test_images # To use images downloaded from the internet, you need to convert it into a 3D array because it is a 2D
+# array.
+ 
+row = 5                              # These lines tell which test image to use, to use your own image, convert it to a 
+col = 4                              # numpy array and replace num_img to the image
+                                     
+num_img = row*col                    
+i = num_img                          
+predictions_array = predictions[i]
+true_label = test_labels
 
-def predict_image(i, predictions_array, true_label, img):
-    predictions_array, true_label, img = predictions_array, true_label[i], img[i] #
-
-    plt.imshow(img, cmap=plt.cm.binary)
-
-    predicted_label = np.argmax(predictions_array) # Returns the indices of the maximum values along an axis.
-    if predicted_label == true_label:
-        color = 'blue'
-    else:
-        color = 'red'
-
-    plt.xlabel("{} {:2.0f}% ({})".format(class_names[predicted_label],
+predictions_array,true_label,img = predictions_array,true_label[i],img[i]
+predicted_label = np.argmax(predictions_array)
+print('Predicted label: {} \nConfidence: {}%\nActual label: {}'.format(class_names[predicted_label],
+                                                                        int(100*np.max(predictions_array)),
+                                                                       class_names[true_label]))
+if predicted_label == true_label:
+    color = 'green'
+else:
+    color = 'red'
+    
+plt.figure(figsize=(2*2*col, 2*row))
+plt.xlabel("{} {:2.0f}% ({})".format(class_names[predicted_label],
                                 100*np.max(predictions_array),
                                 class_names[true_label]),
-                                color=color) # Plot on matplotib
-    
-    print("{} {:2.0f}% ({})".format(class_names[predicted_label],
-                                100*np.max(predictions_array),
-                                class_names[true_label])) # Print
-
-num_rows = 5
-num_cols = 3
-num_images = num_rows*num_cols
-plt.figure(figsize=(2*2*num_cols, 2*num_rows))
-i = num_images
-predict_image(i, predictions[i], test_labels, test_images) # Call the function
+                                color=color)
+plt.imshow(img, cmap=plt.cm.binary)
 plt.show()
