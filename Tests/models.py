@@ -3,8 +3,6 @@ from tensorflow import keras
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Load the CIFAR10 dataset. CIFAR10 is a small dataset with only 10 classes. Strangely, when you train CIFAR10 with the
-# neural network, it gives a 4 dimensional output. To try this out, change 'mnist' to cifar10. Then run the model.
 mnist = keras.datasets.fashion_mnist
 (train_images, train_labels), (test_images, test_labels) = mnist.load_data()
 
