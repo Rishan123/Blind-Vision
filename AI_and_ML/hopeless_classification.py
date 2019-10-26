@@ -23,12 +23,14 @@ model = keras.Sequential([
     keras.layers.Dense(100, activation='softmax')
 ])
 
+
 model.compile(
     optimizer='adam',
     loss='sparse_categorical_crossentropy',
-    metrics=['accuracy'])
+    metrics=['accuracy']
+    )
 
-model.fit(train_images, train_labels, epochs=1)
+model.fit(train_images, train_labels, epochs=10)
 
 test_loss, test_acc = model.evaluate(test_images,  test_labels, verbose=2)
 
