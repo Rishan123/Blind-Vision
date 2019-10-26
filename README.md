@@ -7,6 +7,7 @@ This repository is all about the creation of Blind Vision. Blind Vision will be 
 * Installing Tensorflow                                  
 * Installing Google Text-To-Speech (gTTS)
 * Getting started with Tensorflow
+* Installing Tensorflow Datasets
 
 ## Installing Tensorflow ##
 
