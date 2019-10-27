@@ -10,8 +10,8 @@ import matplotlib.pylab as plt
 # Download the model from :https://tfhub.dev/google/imagenet/inception_resnet_v2/classification/4
 classifier_url ="https://tfhub.dev/google/tf2-preview/mobilenet_v2/classification/2"
 
-# Load the image of a lobster. You can change this to your own image.
-img = 'C:/Users/alosha01/OneDrive - Arm/Desktop/Rishan/Blind-Vision-master/lobster.jpeg'
+# Load the image of a lobster. You can change this to your own image. The model does not accept a .PNG image.
+img = '/path/to/the/image/___.jpg'
 
 # Resize the image
 shape = (224, 224)
