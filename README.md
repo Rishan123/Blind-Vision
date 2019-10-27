@@ -7,7 +7,7 @@ This repository is all about the creation of Blind Vision. Blind Vision will be 
 * Installing Tensorflow                                  
 * Installing Google Text-To-Speech (gTTS)
 * Getting started with Tensorflow
-* Installing Tensorflow Datasets
+* Installing Tensorflow Hub
 
 ## Installing Tensorflow ##
 
@@ -48,3 +48,16 @@ import tensorflow as tf
 ```
 
 ### NOTE: There will be a long set of warnings, especially if your Python package is higher than 3.5 . This is because Tensorflow is designed to work with Python3.5, but nothing to worry. ###
+
+## Installing Tensorflow Hub ##
+
+Tensorflow Hub is a free-of-charge collection of datasets which can be downloaded from a simple Python program.
+```
+pip3 install --upgrade tensorflow-hub
+```
+To test the installation, go to the Terminal, (CTRL,ALT,T) and type in ```python3```. You will then be in the Python environment from the Terminal. Then run:
+```
+import tensorflow_hub as hub
+```
+You should be back at the Python prompt. To exit, type in ```exit()``` or CTRL-D.
+Done!
