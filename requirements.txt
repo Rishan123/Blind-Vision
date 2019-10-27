@@ -3,3 +3,6 @@ Raspberry Pi
 Pi Camera
 Python3.5 (or newer)
 Tensorflow Datasets
+Matplotlib
+Numpy
+Tensorflow Hub
