@@ -11,7 +11,7 @@ import matplotlib.pylab as plt
 classifier_url = "https://tfhub.dev/google/tf2-preview/mobilenet_v2/classification/4"
 
 # Load the image of a lobster. You can change this to your own image. It does not expect a PNG image.
-img = 'C:/Users/alosha01/OneDrive - Arm/Desktop/Rishan/Blind-Vision-master/Pictures/tv.jpg'
+img = 'C:/Users/alosha01/Downloads/OpenCV 4.1.2/opencv/samples/data/apple.jpg'
 
 # Resize the image
 shape = (224, 224)
