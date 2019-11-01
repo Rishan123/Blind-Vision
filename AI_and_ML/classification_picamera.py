@@ -11,18 +11,17 @@ import RPi.GPIO as GPIO
 
 camera = PiCamera()
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(2,GPIO.IN)
+GPIO.setup(15,GPIO.IN)
 
-# Download the model from :https://tfhub.dev/google/imagenet/inception_resnet_v2/classification/4
-classifier_url = "https://tfhub.dev/google/tf2-preview/mobilenet_v2/classification/4"
+classifier_url = "https://tfhub.dev/google/tf2-preview/mobilenet_v2/classification/2"
 shape = (224, 224)
 # Get the labels, and turn it into a NumPy array.
-labels_path = '/home/pi/tf/labels.txt'
+labels_path = '/home/pi/tf/ImageNetLabels.txt'
 labels = np.array(open(labels_path).read().splitlines())
 
 # Make the Sequential model
 model = tf.keras.Sequential([
-    hub.KerasLayer(classifier_url, input_shape=shape+(3,),trainable=True) 
+    hub.KerasLayer(classifier_url, input_shape=shape+(3,)) 
 ])
 print('Ready')
 while True:
