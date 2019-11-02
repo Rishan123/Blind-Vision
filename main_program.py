@@ -5,7 +5,6 @@ from tensorflow.keras import layers
 # Helper libraries
 import numpy as np
 import PIL.Image as Image
-import matplotlib.pylab as plt
 from picamera import PiCamera
 #import RPi.GPIO as GPIO
 from gpiozero import Button
@@ -46,13 +45,13 @@ while True:
     prediction_array = model.predict(img[np.newaxis, ...])
     prediction = np.argmax(prediction_array[0], axis=-1) # Find the top predicted class.
 
-    plt.imshow(img)
-    plt.axis('off')
+    #plt.imshow(img)
+    #plt.axis('off')
 
     #prediction = labels[prediction] # Show the prediction and image using matplotlib.
     speech = speech_labels[prediction]
-    plt.title("Prediction: " + speech.title())
-    plt.show()
+    #plt.title("Prediction: " + speech.title())
+    #plt.show()
     text = str(speech.title())
     sp = gTTS(text=text, lang=language, slow=False)
     sp.save('/home/pi/tf/prediction.mp3')
