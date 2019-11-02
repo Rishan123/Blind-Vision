@@ -19,8 +19,8 @@ button = Button(15,pull_up=False)
 classifier_url = "https://tfhub.dev/google/tf2-preview/mobilenet_v2/classification/2"
 shape = (224, 224)
 # Get the labels, and turn it into a NumPy array.
-labels_path = '/home/pi/tf/ImageNetLabels.txt'
-labels = np.array(open(labels_path).read().splitlines())
+#labels_path = '/home/pi/tf/ImageNetLabels.txt'
+#labels = np.array(open(labels_path).read().splitlines())
 
 speech_labels = '/home/pi/tf/labels.txt'
 speech_labels = np.array(open(speech_labels).read().splitlines())
