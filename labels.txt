@@ -1,106 +1,107 @@
 background
 tench
-goldfish
-great white shark
-tiger shark
-hammerhead
+fish
+shark
+shark
+shark
 electric ray
 stingray
-cock
-hen
-ostrich
-brambling
-goldfinch
-house finch
-junco
-indigo bunting
-robin
-bulbul
-jay
-magpie
-chickadee
-water ouzel
-kite
-bald eagle
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+eagle
 vulture
-great grey owl
-European fire salamander
-common newt
-eft
-spotted salamander
+owl
+salamander
+newt
+newt
+salamander
 axolotl
-bullfrog
-tree frog
-tailed frog
-loggerhead
-leatherback turtle
-mud turtle
-terrapin
-box turtle
-banded gecko
-common iguana
-American chameleon
-whiptail
-agama
-frilled lizard
-alligator lizard
+frog
+frog
+frog
+turtle
+turtle
+turtle
+turtle
+turtle
+gecko
+iguana
+chameleon
+lizard
+lizard
+lizard
+lizard
 Gila monster
-green lizard
-African chameleon
+lizard
+chameleon
 Komodo dragon
-African crocodile
-American alligator
+crocodile
+alligator
 triceratops
-thunder snake
-ringneck snake
-hognose snake
-green snake
-king snake
-garter snake
-water snake
-vine snake
-night snake
-boa constrictor
-rock python
-Indian cobra
-green mamba
-sea snake
-horned viper
-diamondback
-sidewinder
+snake
+snake
+snake
+snake
+snake
+snake
+snake
+snake
+snake
+snake
+snake
+snake
+snake
+snake
+snake
+snake
+snake
 trilobite
-harvestman
+spider
 scorpion
-black and gold garden spider
-barn spider
-garden spider
-black widow
-tarantula
-wolf spider
+spider
+spider
+spider
+spider
+spider
+spider
 tick
 centipede
-black grouse
-ptarmigan
-ruffed grouse
-prairie chicken
-peacock
-quail
-partridge
-African grey
-macaw
-sulphur-crested cockatoo
-lorikeet
-coucal
-bee eater
-hornbill
-hummingbird
-jacamar
-toucan
-drake
-red-breasted merganser
-goose
-black swan
-tusker
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+elephant
 echidna
 platypus
 wallaby
@@ -108,233 +109,232 @@ koala
 wombat
 jellyfish
 sea anemone
-brain coral
-flatworm
-nematode
-conch
-snail
-slug
-sea slug
-chiton
-chambered nautilus
-Dungeness crab
-rock crab
-fiddler crab
-king crab
-American lobster
-spiny lobster
-crayfish
-hermit crab
+coral
+worm
+worm
+shell
+mollusc
+mollusc
+mollusc
+mollusc
+mollusc
+crab
+crab
+crab
+crab
+lobster
+lobster
+fish
+crab
 isopod
-white stork
-black stork
+stork
+stork
 spoonbill
 flamingo
-little blue heron
-American egret
-bittern
+heron
+bird
+bird
 crane
-limpkin
-European gallinule
-American coot
-bustard
-ruddy turnstone
-red-backed sandpiper
-redshank
-dowitcher
-oystercatcher
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
+bird
 pelican
-king penguin
+penguin
 albatross
-grey whale
-killer whale
+whale
+whale
 dugong
 sea lion
-Chihuahua
-Japanese spaniel
-Maltese dog
-Pekinese
-Shih-Tzu
-Blenheim spaniel
-papillon
-toy terrier
-Rhodesian ridgeback
-Afghan hound
-basset
-beagle
-bloodhound
-bluetick
-black-and-tan coonhound
-Walker hound
-English foxhound
-redbone
-borzoi
-Irish wolfhound
-Italian greyhound
-whippet
-Ibizan hound
-Norwegian elkhound
-otterhound
-Saluki
-Scottish deerhound
-Weimaraner
-Staffordshire bullterrier
-American Staffordshire terrier
-Bedlington terrier
-Border terrier
-Kerry blue terrier
-Irish terrier
-Norfolk terrier
-Norwich terrier
-Yorkshire terrier
-wire-haired fox terrier
-Lakeland terrier
-Sealyham terrier
-Airedale
-cairn
-Australian terrier
-Dandie Dinmont
-Boston bull
-miniature schnauzer
-giant schnauzer
-standard schnauzer
-Scotch terrier
-Tibetan terrier
-silky terrier
-soft-coated wheaten terrier
-West Highland white terrier
-Lhasa
-flat-coated retriever
-curly-coated retriever
-golden retriever
-Labrador retriever
-Chesapeake Bay retriever
-German short-haired pointer
-vizsla
-English setter
-Irish setter
-Gordon setter
-Brittany spaniel
-clumber
-English springer
-Welsh springer spaniel
-cocker spaniel
-Sussex spaniel
-Irish water spaniel
-kuvasz
-schipperke
-groenendael
-malinois
-briard
-kelpie
-komondor
-Old English sheepdog
-Shetland sheepdog
-collie
-Border collie
-Bouvier des Flandres
-Rottweiler
-German shepherd
-Doberman
-miniature pinscher
-Greater Swiss Mountain dog
-Bernese mountain dog
-Appenzeller
-EntleBucher
-boxer
-bull mastiff
-Tibetan mastiff
-French bulldog
-Great Dane
-Saint Bernard
-Eskimo dog
-malamute
-Siberian husky
-dalmatian
-affenpinscher
-basenji
-pug
-Leonberg
-Newfoundland
-Great Pyrenees
-Samoyed
-Pomeranian
-chow
-keeshond
-Brabancon griffon
-Pembroke
-Cardigan
-toy poodle
-miniature poodle
-standard poodle
-Mexican hairless
-timber wolf
-white wolf
-red wolf
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+dog
+wolf
+wolf
+wolf
 coyote
 dingo
 dhole
-African hunting dog
+dog
 hyena
-red fox
-kit fox
-Arctic fox
-grey fox
-tabby
-tiger cat
-Persian cat
-Siamese cat
-Egyptian cat
-cougar
+fox
+fox
+fox
+fox
+cat
+cat
+cat
+cat
+cat
+cat
 lynx
 leopard
-snow leopard
+leopard
 jaguar
 lion
 tiger
 cheetah
-brown bear
-American black bear
-ice bear
-sloth bear
+bear
+bear
+bear
+bear
 mongoose
 meerkat
-tiger beetle
+beetle
 ladybug
-ground beetle
-long-horned beetle
-leaf beetle
-dung beetle
-rhinoceros beetle
+beetle
+beetle
+beetle
+beetle
+beetle
 weevil
 fly
 bee
 ant
-grasshopper
-cricket
+insect
+insect
 walking stick
-cockroach
-mantis
-cicada
-leafhopper
-lacewing
+insect
+insect
+insect
+insect
+insect
 dragonfly
 damselfly
-admiral
-ringlet
-monarch
-cabbage butterfly
-sulphur butterfly
-lycaenid
+butterfly
+butterfly
+butterfly
+butterfly
+butterfly
+butterfly
 starfish
 sea urchin
 sea cucumber
-wood rabbit
+rabbit
 hare
-Angora
+rabbit
 hamster
 porcupine
-fox squirrel
+squirrel
 marmot
 beaver
 guinea pig
@@ -453,7 +453,7 @@ bobsled
 bolo tie
 bonnet
 bookcase
-bookshop
+book
 bottlecap
 bow
 bow tie
@@ -947,16 +947,16 @@ artichoke
 bell pepper
 cardoon
 mushroom
-Granny Smith
-strawberry
-orange
-lemon
-fig
-pineapple
-banana
-jackfruit
-apple
-pomegranate
+fruit
+fruit
+fruit
+fruit
+fruit
+fruit
+fruit
+fruit
+fruit
+fruit
 hay
 carbonara
 chocolate sauce
