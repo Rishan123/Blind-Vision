@@ -29,33 +29,46 @@ speech_labels = np.array(open(speech_labels).read().splitlines())
 model = tf.keras.Sequential([
     hub.KerasLayer(classifier_url, input_shape=shape+(3,)) 
 ])
-print('Ready')
 language = 'en'
-while True:
-    #if GPIO.input(15):
-    button.wait_for_press()
-    camera.capture('/home/pi/cap.jpg')
-    img = '/home/pi/cap.jpg'
-    # Resize the image
-    img = Image.open(img).resize(shape)
+text = 'Ready'
+sp = gTTS(text=text, lang=language, slow=False)
+sp.save('/home/pi/tf/ready.mp3')
+os.system('omxplayer /home/pi/tf/ready.mp3')
+print('Ready')
+try:
+    while True:
+        #if GPIO.input(15):
+        button.wait_for_press()
+        camera.capture('/home/pi/cap.jpg')
+        img = '/home/pi/cap.jpg'
+        # Resize the image
+        img = Image.open(img).resize(shape)
 
-    # Convert the image to a NumPy array.
-    img = np.array(img)/255.0
+        # Convert the image to a NumPy array.
+        img = np.array(img)/255.0
 
-    prediction_array = model.predict(img[np.newaxis, ...])
-    prediction = np.argmax(prediction_array[0], axis=-1) # Find the top predicted class.
+        prediction_array = model.predict(img[np.newaxis, ...])
+        prediction = np.argmax(prediction_array[0], axis=-1) # Find the top predicted class.
 
-    #plt.imshow(img)
-    #plt.axis('off')
+        #plt.imshow(img)
+        #plt.axis('off')
 
-    #prediction = labels[prediction] # Show the prediction and image using matplotlib.
-    speech = speech_labels[prediction]
-    #plt.title("Prediction: " + speech.title())
-    #plt.show()
-    text = str(speech.title())
+        #prediction = labels[prediction] # Show the prediction and image using matplotlib.
+        speech = speech_labels[prediction]
+        #plt.title("Prediction: " + speech.title())
+        #plt.show()
+        text = str(speech.title())
+        sp = gTTS(text=text, lang=language, slow=False)
+        sp.save('/home/pi/tf/prediction.mp3')
+        os.system('omxplayer /home/pi/tf/prediction.mp3')
+        os.system('sudo rm /home/pi/cap.jpg')
+        text = 'Ready'
+        os.system('omxplayer /home/pi/tf/ready.mp3')
+        print('Ready')
+except:
+    print('Something went wrong')
+    text = 'Something went wrong'
     sp = gTTS(text=text, lang=language, slow=False)
-    sp.save('/home/pi/tf/prediction.mp3')
-    os.system('omxplayer /home/pi/tf/prediction.mp3')
-    os.system('sudo rm /home/pi/cap.jpg')
-    print('Ready')
+    sp.save('/home/pi/tf/error.mp3')
+    os.system('omxplayer /home/pi/tf/error.mp3')
 
