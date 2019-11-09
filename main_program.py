@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import tensorflow as tf
 import tensorflow_hub as hub
 from tensorflow.keras import layers
@@ -64,8 +66,4 @@ try:
         print('Ready')
 except:
     print('Something went wrong')
-    text = 'Something went wrong'
-    sp = gTTS(text=text, lang=language, slow=False)
-    sp.save('/home/pi/tf/error.mp3')
-    os.system('omxplayer /home/pi/tf/error.mp3')
 
