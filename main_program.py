@@ -57,6 +57,7 @@ try:
         #plt.title("Prediction: " + speech.title())
         #plt.show()
         text = str(speech.title())
+        print(text)
         sp = gTTS(text=text, lang=language, slow=False)
         sp.save('/home/pi/tf/prediction.mp3')
         os.system('omxplayer /home/pi/tf/prediction.mp3')

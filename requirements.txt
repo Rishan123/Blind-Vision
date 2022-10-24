@@ -1,8 +1,0 @@
-Tensorflow
-Raspberry Pi
-Pi Camera
-Python 
-Tensorflow Datasets
-Matplotlib
-Numpy
-Tensorflow Hub
