@@ -15,7 +15,7 @@ button = Button(15, pull_up=False)
 print("loaded variables and functions")
 def espeak(text: str, pitch: int=50) -> int:
     # Use espeak to convert text to speech
-    return subprocess.run(['espeak', f'-p {pitch}', text]).returncode
+    return subprocess.run(['espeak', '-g 6', '-p {pitch}', '-s 190', text]).returncode
 
 def load_labels(filename):
     my_labels = []
@@ -32,7 +32,9 @@ while True:
     print("Ready")
     espeak("Ready")
     print("Waiting for button press")
+    camera.start_preview()
     button.wait_for_press()
+    camera.stop_preview()
     camera.capture('/home/pi/Blind-Vision/cap.jpg')
     image = '/home/pi/Blind-Vision/cap.jpg'
     camera.close()
@@ -72,10 +74,23 @@ while True:
         confidence = float(results[i])
         if floating_model:
             print('{0:08.6f}'.format(confidence)+":", labels[i])
+            if confidence >= 0.5:
+                print(predictions[0])# The first (and only) item in the list. This will be spoken in the real project
+                espeak(str(predictions[0]))
+            else:
+                espeak("Unidentified object")
         else:
-            print('{0:08.6f}'.format(confidence/255.0)+":", labels[i])
-            predictions.append(labels[i]) # This will be the object with the highest confidence, since the recognition algorithm lists the possibilities in order of their confidence
+            print((confidence/255.0),":", labels[i])
+            if (confidence/255.0) >= 0.5:
+                predictions.append(labels[i]) # This will be the object with the highest confidence, since the recognition algorithm lists the possibilities in order of their confidence
+                espeak(str(labels[i]))
+            else:
+                espeak("I do not know what this object is")
             break
+    
+#         if (confidence/255.0) >= 0.5:
+#             print(predictions[0])# The first (and only) item in the list. This will be spoken in the real project
+#             espeak(str(predictions[0]))
+#         else:
+#             espeak("Unidentified object")
 
-    print(predictions[0])# The first (and only) item in the list. This will be spoken in the real project
-    espeak(str(predictions[0]))
