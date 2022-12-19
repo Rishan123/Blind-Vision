@@ -5,17 +5,16 @@ from tensorflow.lite.python import interpreter as interpreter_wrapper
 from gpiozero import Button
 from time import sleep
 from picamera import PiCamera
-from gtts import gTTS
+# from gtts import gTTS
 import os
 import subprocess
 
 button = Button(15, pull_up=False)
 
-
 print("loaded variables and functions")
 def espeak(text: str, pitch: int=50) -> int:
     # Use espeak to convert text to speech
-    return subprocess.run(['espeak', '-g 6', '-p {pitch}', '-s 190', text]).returncode
+    return subprocess.run(['espeak', '-ven+f3', '-k5', '-s150', text]).returncode
 
 def load_labels(filename):
     my_labels = []
@@ -32,9 +31,9 @@ while True:
     print("Ready")
     espeak("Ready")
     print("Waiting for button press")
-    camera.start_preview()
+#     camera.start_preview()
     button.wait_for_press()
-    camera.stop_preview()
+#     camera.stop_preview()
     camera.capture('/home/pi/Blind-Vision/cap.jpg')
     image = '/home/pi/Blind-Vision/cap.jpg'
     camera.close()
@@ -76,14 +75,14 @@ while True:
             print('{0:08.6f}'.format(confidence)+":", labels[i])
             if confidence >= 0.5:
                 print(predictions[0])# The first (and only) item in the list. This will be spoken in the real project
-                espeak(str(predictions[0]))
+                espeak('This is a ' + str(predictions[0]))
             else:
                 espeak("Unidentified object")
         else:
             print((confidence/255.0),":", labels[i])
             if (confidence/255.0) >= 0.5:
                 predictions.append(labels[i]) # This will be the object with the highest confidence, since the recognition algorithm lists the possibilities in order of their confidence
-                espeak(str(labels[i]))
+                espeak('This is a ' + str(labels[i]))
             else:
                 espeak("I do not know what this object is")
             break
