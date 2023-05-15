@@ -9,7 +9,7 @@ from picamera import PiCamera
 import os
 import subprocess
 
-button = Button(15, pull_up=False)
+button = Button(2, pull_up=True)
 
 print("loaded variables and functions")
 def espeak(text: str, pitch: int=50) -> int:
